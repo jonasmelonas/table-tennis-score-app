@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import ModeSelect from './components/ModeSelect.vue';
-import PlayerSelectSingle from './components/PlayerSelectSingle.vue';
 
 const modeSelected = ref("")
 console.log(modeSelected)
@@ -9,8 +7,7 @@ console.log(modeSelected)
 
 <template>
   <div class="app-size bg-gray-300 text-center">
-    <ModeSelect v-if="!modeSelected" @select="modeSelected = $event" />
-    <PlayerSelectSingle v-else-if="modeSelected == 'single' " />
+    <router-view />
   </div>
 </template>
 

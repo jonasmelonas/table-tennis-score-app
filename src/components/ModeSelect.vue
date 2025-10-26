@@ -1,11 +1,13 @@
 <script setup lang="ts">
-const emit = defineEmits<{
-  (e: 'select', mode: string): void
-}>();
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 function choose(mode: string) {
-  emit('select', mode);
-  console.log()
+  if (mode === 'single') {
+    router.push({ name: 'PlayerSingle' })
+  } else {
+    router.push('/tournament') // update when route exists
+  }
 }
 </script>
 
@@ -15,9 +17,10 @@ function choose(mode: string) {
         <div class="w-full h-1/3  flex flex-col justify-around px-28">
             <button class="
                 h-20 
-                border-1 
+                border-2
+                border-blue-800 
                 rounded-2xl 
-                bg-blue-300 
+                bg-indigo-400 
                 drop-shadow-md 
                 drop-shadow-neutral-500"
                 @click="choose('single')"
@@ -27,9 +30,10 @@ function choose(mode: string) {
 
             <button class="
                 h-20 
-                border-1 
+                border-2
+                border-blue-800
                 rounded-2xl 
-                bg-blue-300 
+                bg-indigo-400
                 drop-shadow-md 
                 drop-shadow-neutral-500"
                 @click="choose('tournament')"
